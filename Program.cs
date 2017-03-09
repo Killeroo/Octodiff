@@ -16,7 +16,7 @@ namespace Octodiff
             var commandName = ExtractCommand(args, out commandArguments);
             var locator = new CommandLocator();
             var command = locator.Find(commandName);
-            
+
             if (command == null)
             {
                 locator.Create(locator.Find("help")).Execute(commandArguments);
@@ -31,7 +31,7 @@ namespace Octodiff
             catch (OptionException ex)
             {
                 WriteError(ex);
-                locator.Create(locator.Find("help")).Execute(new[] {commandName});
+                locator.Create(locator.Find("help")).Execute(new[] { commandName });
                 return 4;
             }
             catch (UsageException ex)
